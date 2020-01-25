@@ -1,0 +1,37 @@
+<div class="forecast-list">
+    <mat-card *ngFor="let dailyForecast of dailyForecasts">
+        <mat-card-title class="info">
+            {{ dailyForecast.Date | date: 'EEEE' }}
+        </mat-card-title>
+        <mat-card-content>
+            <p class="info">Day: {{ dailyForecast.Day.IconPhrase }}</p>
+            <p class="info">
+                <img
+                    src="{{ weatherService.toIconUrl(dailyForecast.Day.Icon) }}"
+                />
+            </p>
+            <p class="info">Night: {{ dailyForecast.Night.IconPhrase }}</p>
+            <p class="info">
+                <img
+                    src="{{
+                        weatherService.toIconUrl(dailyForecast.Night.Icon)
+                    }}"
+                />
+            </p>
+            <p class="info">
+                {{
+                    weatherService.toCelsius(
+                        dailyForecast.Temperature.Minimum.Value
+                    )
+                }}
+                C /
+                {{
+                    weatherService.toCelsius(
+                        dailyForecast.Temperature.Maximum.Value
+                    )
+                }}
+                C
+            </p>
+        </mat-card-content>
+    </mat-card>
+</div>

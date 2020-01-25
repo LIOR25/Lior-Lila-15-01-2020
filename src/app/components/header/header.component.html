@@ -1,0 +1,24 @@
+<mat-toolbar>
+    <img src="../../../assets/sun logo.jpg" />
+    <a routerLink="/home" class="navbar-brand">
+        Weather App
+    </a>
+    <span class="nav-container"></span>
+    <nav>
+        <ul>
+            <li>
+                <a
+                    routerLinkActive="active"
+                    [routerLinkActiveOptions]="{ exact: true }"
+                    routerLink="/"
+                    >Home</a
+                >
+            </li>
+            <li>
+                <a routerLinkActive="active" routerLink="/favorites"
+                    >Favorites</a
+                >
+            </li>
+        </ul>
+    </nav>
+</mat-toolbar>

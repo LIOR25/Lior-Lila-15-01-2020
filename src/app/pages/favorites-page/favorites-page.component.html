@@ -1,0 +1,26 @@
+<div class="fevorites-list">
+    <mat-card
+        *ngFor="let favorite of favoritesForecasts"
+        (click)="setCurrentCity(favorite.city)"
+    >
+        <mat-card-title class="info">
+            {{ favorite.city.name }}
+        </mat-card-title>
+        <mat-card-content class="info">
+            <p>
+                {{ favorite.forecast.WeatherText }}
+            </p>
+            <p>
+                <img
+                    src="{{
+                        weatherService.toIconUrl(favorite.forecast.WeatherIcon)
+                    }}"
+                />
+            </p>
+            <p>
+                {{ favorite.forecast.Temperature.Imperial.Value }} F /
+                {{ favorite.forecast.Temperature.Metric.Value }} C
+            </p>
+        </mat-card-content>
+    </mat-card>
+</div>

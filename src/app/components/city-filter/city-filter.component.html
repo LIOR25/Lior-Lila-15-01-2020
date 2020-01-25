@@ -1,0 +1,22 @@
+<mat-form-field>
+    <input
+        placeholder="Pick a City"
+        matInput
+        name="city"
+        (input)="displayCities($event)"
+        [matAutocomplete]="auto"
+        ngModel
+        #city="ngModel"
+        pattern="^[a-zA-Z ]*$"
+    />
+    <mat-error>only English letter please</mat-error>
+    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+        <mat-option
+            *ngFor="let cityResult of cityResults"
+            [value]="cityResult.name"
+            (onSelectionChange)="setCurrentCity(cityResult)"
+        >
+            {{ cityResult.name }} <em>{{ cityResult.country }}</em>
+        </mat-option>
+    </mat-autocomplete>
+</mat-form-field>

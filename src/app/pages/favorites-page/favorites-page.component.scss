@@ -1,0 +1,20 @@
+.fevorites-list {
+    margin: 20px auto;
+    margin-top: 100px;
+    max-width: 1000px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
+
+mat-card-title {
+    font-size: 20px;
+}
+
+mat-card {
+    margin: 5px;
+}
+
+.info {
+    display: grid;
+    justify-content: center;
+}

@@ -1,0 +1,28 @@
+.forecast-list {
+    margin: 20px auto;
+    max-width: 1000px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
+
+mat-card {
+    margin: 5px;
+}
+
+mat-card-title {
+    font-size: 20px;
+}
+
+mat-card-content {
+    font-size: 17px;
+}
+
+.info {
+    display: grid;
+    justify-content: center;
+    text-align: center;
+}
+
+img {
+    margin-top: 5px;
+}

@@ -1,0 +1,8 @@
+<app-header></app-header>
+<div class="main-app">
+    <div class="mode-switcher" (click)="switchMode()">
+        Mode: {{ isLight ? 'light' : 'dark' }}
+    </div>
+
+    <router-outlet></router-outlet>
+</div>
