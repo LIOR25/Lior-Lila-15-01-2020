@@ -15,7 +15,6 @@ export class AppComponent {
         let textColor: string;
         this.isLight ? (bgColor = '#f8fafb') : (bgColor = '#272727');
         this.isLight ? (textColor = '#272727') : (textColor = '#f8fafb');
-        console.log(bgColor);
         document.querySelector('body').style.setProperty('--bg-color', bgColor);
         document
             .querySelector('body')

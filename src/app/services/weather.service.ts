@@ -46,7 +46,7 @@ export class WeatherService {
 
     toIconUrl(iconIndex) {
         iconIndex = iconIndex.toString().padStart(2, '0');
-        return `https://developer.accuweather.com/sites/default/files/${iconIndex}-s.png`;
+        return `//developer.accuweather.com/sites/default/files/${iconIndex}-s.png`;
     }
 
     setCurrentCity(currentCity) {
@@ -70,28 +70,26 @@ export class WeatherService {
     }
 
     getGeoPosition(lat: number, lng: number): Observable<any> {
-        const GeoPositionUrl = `http://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=${this.API_KEY}&q=${lat},${lng}`;
+        const GeoPositionUrl = `//dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=${this.API_KEY}&q=${lat},${lng}`;
         return this.http.get(GeoPositionUrl);
     }
 
     getAutocomplete(text: string): Observable<any> {
-        const AutocompleteUrl = `http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=${this.API_KEY}&q=${text}`;
+        const AutocompleteUrl = `//dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=${this.API_KEY}&q=${text}`;
         return this.http
             .get(AutocompleteUrl)
             .pipe(retry(1), catchError(this.utilService.handleError));
     }
 
     get5DaysOfForecasts(key: number): Observable<any> {
-        console.log(key);
-
-        const DaysOfForecasts = `http://dataservice.accuweather.com/forecasts/v1/daily/5day/${key}?apikey=${this.API_KEY}`;
+        const DaysOfForecasts = `//dataservice.accuweather.com/forecasts/v1/daily/5day/${key}?apikey=${this.API_KEY}`;
         return this.http
             .get(DaysOfForecasts)
             .pipe(retry(1), catchError(this.utilService.handleError));
     }
 
     getCurrentWeather(locationKey: number): Observable<any> {
-        const CurrentWeatherUrl = `https://dataservice.accuweather.com/currentconditions/v1/${locationKey}?apikey=${this.API_KEY}`;
+        const CurrentWeatherUrl = `//dataservice.accuweather.com/currentconditions/v1/${locationKey}?apikey=${this.API_KEY}`;
         return this.http.get(CurrentWeatherUrl);
     }
 }

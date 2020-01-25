@@ -33,17 +33,11 @@ export class WeatherPageComponent implements OnInit, OnDestroy {
             currentCity => {
                 this.isFavorite = this.favoritesService.isFavorite(currentCity);
                 this.currentCity = currentCity;
-
-                console.log(this.currentCity, ' this.currentCity');
                 if (this.currentCity) {
                     this.dailyWeatherSub = this.weatherService
                         .getCurrentWeather(this.currentCity.key)
                         .subscribe(dailyWeather => {
                             this.dailyWeather = dailyWeather;
-                            console.log(
-                                this.dailyWeather[0],
-                                ' this.dailyWeather'
-                            );
                         });
                 }
             },

@@ -2,8 +2,6 @@ import { FavoritesService } from '../../services/favorites.service';
 import { WeatherService } from '../../services/weather.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import City from '../../models/City';
-import Swal from 'sweetalert2';
 
 @Component({
     selector: 'app-favorites-page',
@@ -15,7 +13,7 @@ export class FavoritesPageComponent implements OnInit {
 
     constructor(
         private router: Router,
-        private weatherService: WeatherService,
+        public weatherService: WeatherService,
         private favoritesService: FavoritesService
     ) {}
 

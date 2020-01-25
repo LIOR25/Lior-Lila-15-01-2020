@@ -1,5 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Component, Input } from '@angular/core';
 import { WeatherService } from '../../services/weather.service';
 
 @Component({
@@ -7,26 +6,21 @@ import { WeatherService } from '../../services/weather.service';
     templateUrl: './forecast.component.html',
     styleUrls: ['./forecast.component.scss'],
 })
-export class ForecastComponent implements OnInit {
+export class ForecastComponent {
     dailyForecasts = [];
     error: string;
 
-    constructor(private weatherService: WeatherService) {}
+    constructor(public weatherService: WeatherService) {}
 
     @Input()
     set city(city) {
-        console.log(city);
-
         this.weatherService.get5DaysOfForecasts(city.key).subscribe(
             forecast => {
                 this.dailyForecasts = forecast.DailyForecasts;
-                console.log(this.dailyForecasts, ' this.dailyForecasts');
             },
             error => {
                 this.error = error;
             }
         );
     }
-
-    ngOnInit() {}
 }
