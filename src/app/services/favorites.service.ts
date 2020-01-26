@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Observable, from } from 'rxjs';
-import { StorageService } from './storage.service';
 import City from '../models/City';
+import { StorageService } from './storage.service';
 import Swal from 'sweetalert2';
 
 @Injectable({

@@ -1,21 +1,19 @@
 <div class="city-filter-box">
     <app-city-filter></app-city-filter>
 </div>
-<div *ngIf="currentCity && dailyWeather">
+<div *ngIf="currentCity && (weatherState | async).dailyWeather">
     <header class="center">
         <h1>
             {{ currentCity.name }}
             <small
-                >{{ currentCity.country }} {{ dailyWeather[0].WeatherText }}
-                {{ dailyWeather[0].Temperature.Metric.Value.toFixed() }}
-                c</small
-            >
+                >{{ currentCity.country }}
+                {{ (weatherState | async).dailyWeather.weatherText }}
+                {{ (weatherState | async).dailyWeather.dailyTemperature }}
+                c</small>
         </h1>
-
         <button mat-raised-button color="primary" (click)="toggleFavorite()">
             {{ isFavorite ? 'Remove From' : 'Add To' }} Favorite
         </button>
-        <!-- <mat-slide-toggle (click)="toggleD()"> {{ isD ? 'C' : 'D' }} Slide me!</mat-slide-toggle> -->
     </header>
     <app-forecast [city]="currentCity"></app-forecast>
 </div>

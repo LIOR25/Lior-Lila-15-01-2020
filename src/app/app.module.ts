@@ -22,14 +22,14 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material';
-import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
+
+import { weatherReducer } from './store/weather.reducer';
+import { StoreModule } from '@ngrx/store';
 
 @NgModule({
     declarations: [
@@ -51,14 +51,12 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
         MatFormFieldModule,
         MatInputModule,
         MatCardModule,
-        MatSlideToggleModule,
         MatButtonModule,
         MatMenuModule,
         MatToolbarModule,
         MatIconModule,
-        MatProgressSpinnerModule,
-        MatSnackBarModule,
         [SweetAlert2Module.forRoot(), BrowserAnimationsModule],
+        StoreModule.forRoot({ weatherState: weatherReducer }),
     ],
     providers: [WeatherService, FavoritesService, StorageService, UtilService],
     bootstrap: [AppComponent],

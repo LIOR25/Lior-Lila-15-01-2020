@@ -1,26 +1,20 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs';
+import { retry, catchError } from 'rxjs/operators';
 import City from '../models/City';
 import { UtilService } from './util.service';
-import { DailyWeather } from 'src/app/models/DailyWeather';
 
-import { retry, catchError } from 'rxjs/operators';
 
 @Injectable({
     providedIn: 'root',
 })
 export class WeatherService {
-    API_KEY = 'm9lAGyPN4SxWZAFBBSghB43DxuBB1VDj';
+    API_KEY = 'X2rypXBseZ5wl2VSzcNvDJWkCQXiwaO4';
     DEFAULT_LAT = 32.109333;
     DEFAULT_LNG = 34.855499;
     celsius: number;
-
     currentCity = new BehaviorSubject<City>(null);
-
-    dailyWeather = new BehaviorSubject<DailyWeather>(null);
-
-    isCelsius: boolean = false;
 
     constructor(private http: HttpClient, private utilService: UtilService) {
         this.getCurrentPosition().then(coords =>

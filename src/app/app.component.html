@@ -1,8 +1,11 @@
 <app-header></app-header>
-<div class="main-app">
-    <div class="mode-switcher" (click)="switchMode()">
+<div class="main-app {{ isLight ? 'light-theme' : 'dark-theme' }}">
+    <button mat-raised-button color="primary" class="mode-switcher" (click)="switchMode()">
         Mode: {{ isLight ? 'light' : 'dark' }}
-    </div>
-
+    </button>
     <router-outlet></router-outlet>
 </div>
+
+
+
+

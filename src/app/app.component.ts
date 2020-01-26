@@ -11,13 +11,5 @@ export class AppComponent {
 
     switchMode() {
         this.isLight = !this.isLight;
-        let bgColor: string;
-        let textColor: string;
-        this.isLight ? (bgColor = '#f8fafb') : (bgColor = '#272727');
-        this.isLight ? (textColor = '#272727') : (textColor = '#f8fafb');
-        document.querySelector('body').style.setProperty('--bg-color', bgColor);
-        document
-            .querySelector('body')
-            .style.setProperty('--text-color', textColor);
     }
 }

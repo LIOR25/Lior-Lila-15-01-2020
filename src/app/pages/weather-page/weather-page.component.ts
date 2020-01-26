@@ -1,34 +1,34 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Subscription, Observable } from 'rxjs';
+import { Store, select } from '@ngrx/store';
+import * as WeatherActions from '../../store/weather.actions';
+import City from 'src/app/models/City';
+import { DailyWeather } from 'src/app/models/DailyWeather';
 import { WeatherService } from '../../services/weather.service';
 import { FavoritesService } from '../../services/favorites.service';
-import City from 'src/app/models/City';
-import { Subscription } from 'rxjs';
-import { DailyWeather } from 'src/app/models/DailyWeather';
 
-// import { Store, select } from '@ngrx/store';
-// import { Observable } from 'rxjs';
-// import { toggleFavorite } from '../../store/favorites.action';
 @Component({
     selector: 'app-weather-page',
     templateUrl: './weather-page.component.html',
     styleUrls: ['./weather-page.component.scss'],
 })
+
 export class WeatherPageComponent implements OnInit, OnDestroy {
-    citySubsription: Subscription;
     currentCity: City;
+    citySubsription: Subscription;
     dailyWeatherSub: Subscription;
-    dailyWeather: DailyWeather;
-    dailyResult = [];
+    weatherState: Observable<{ dailyWeather: DailyWeather }>;
     isFavorite: boolean;
-    isD: boolean;
     error: string;
 
     constructor(
         private weatherService: WeatherService,
-        private favoritesService: FavoritesService
+        private favoritesService: FavoritesService,
+        private store: Store<{ weatherState: { dailyWeather: DailyWeather } }>
     ) {}
 
     ngOnInit() {
+        this.weatherState = this.store.select('weatherState');
         this.citySubsription = this.weatherService.currentCity.subscribe(
             currentCity => {
                 this.isFavorite = this.favoritesService.isFavorite(currentCity);
@@ -37,7 +37,12 @@ export class WeatherPageComponent implements OnInit, OnDestroy {
                     this.dailyWeatherSub = this.weatherService
                         .getCurrentWeather(this.currentCity.key)
                         .subscribe(dailyWeather => {
-                            this.dailyWeather = dailyWeather;
+                            this.store.dispatch(
+                                new WeatherActions.UpdateDailyWeather({
+                                    weatherText: dailyWeather[0].WeatherText,
+                                    dailyTemperature: dailyWeather[0].Temperature.Metric.Value.toFixed(),
+                                })
+                            );
                         });
                 }
             },
@@ -49,7 +54,6 @@ export class WeatherPageComponent implements OnInit, OnDestroy {
 
     ngOnDestroy() {
         this.citySubsription.unsubscribe();
-        this.dailyWeatherSub.unsubscribe();
     }
 
     toggleFavorite() {
@@ -59,6 +63,4 @@ export class WeatherPageComponent implements OnInit, OnDestroy {
             : service.add(this.currentCity);
         this.isFavorite = !this.isFavorite;
     }
-
-    toggleD() {}
 }

@@ -1,7 +1,7 @@
-import { FavoritesService } from '../../services/favorites.service';
-import { WeatherService } from '../../services/weather.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { FavoritesService } from '../../services/favorites.service';
+import { WeatherService } from '../../services/weather.service';
 
 @Component({
     selector: 'app-favorites-page',
