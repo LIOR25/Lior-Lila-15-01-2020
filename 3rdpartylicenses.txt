@@ -95,14 +95,15 @@ THE SOFTWARE.
 
 @angular/material/form-field
 
-@angular/material/snack-bar
-
 @angular/material/toolbar
 
 @angular/platform-browser
 MIT
 
 @angular/router
+MIT
+
+@ngrx/store
 MIT
 
 @sweetalert2/ngx-sweetalert2
