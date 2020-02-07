@@ -47,12 +47,17 @@ export class WeatherService {
         this.currentCity.next(currentCity);
     }
 
+    
     getCurrentPosition() {
         return new Promise((resolve, reject) => {
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(
                     position => resolve(position.coords),
-                    reject
+                    () =>
+                        resolve({
+                            latitude: this.DEFAULT_LAT,
+                            longitude: this.DEFAULT_LNG,
+                        })
                 );
             } else {
                 resolve({
@@ -63,34 +68,7 @@ export class WeatherService {
         });
     }
 
-// getCurrentPosition(){
-//       if (navigator.geolocation) {
-//       navigator.geolocation.getCurrentPosition((position) => {
-//         const {latitude, longitude} = position.coords;
-//         this.getGeoPosition(latitude, longitude).subscribe((data) => {
-//           this.setCurrentCityByGeoPosition(data);
-//         });
-//       });
-//     } else {
-//       this.getGeoPosition(this.DEFAULT_LAT, this.DEFAULT_LNG).subscribe((data) => {
-//         this.setCurrentCityByGeoPosition(data);
-//       });
-//     }
-// }
-
-
-    // getCurrentPosition(){
-    //  if (navigator.geolocation) {
-    //     navigator.geolocation.getCurrentPosition((position) => {
-    //     const {latitude, longitude} = position.coords;
-    //     this.getGeoPosition(latitude,longitude).subscribe(coords =>{
-    //          this.setCurrentCityByGeoPosition(coords);
-    //     });
-    //     })
-
-    // }
-    //                     }
-
+    
     getGeoPosition(lat: number, lng: number): Observable<any> {
         const GeoPositionUrl = `//dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=${this.API_KEY}&q=${lat},${lng}`;
         return this.http.get(GeoPositionUrl);
