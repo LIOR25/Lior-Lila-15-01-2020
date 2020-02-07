@@ -9,6 +9,7 @@ import { WeatherService } from '../../services/weather.service';
 export class CityFilterComponent {
     cityResults = [];
     error: string;
+ 
 
     constructor(private weatherService: WeatherService) {}
 
@@ -18,18 +19,20 @@ export class CityFilterComponent {
             this.cityResults = [];
             return;
         }
-        this.weatherService.getAutocomplete(inputValue).subscribe(
-            city => {
-                this.cityResults = city.map(item => ({
-                    key: item.Key,
-                    name: item.LocalizedName,
-                    country: item.Country.LocalizedName,
-                }));
-            },
-            error => {
-                this.error = error;
-            }
-        );
+        if (inputValue > 3) {
+            this.weatherService.getAutocomplete(inputValue).subscribe(
+                city => {
+                    this.cityResults = city.map(item => ({
+                        key: item.Key,
+                        name: item.LocalizedName,
+                        country: item.Country.LocalizedName,
+                    }));
+                },
+                error => {
+                    this.error = error;
+                }
+            );
+        }
     }
 
     setCurrentCity(city) {

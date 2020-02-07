@@ -63,6 +63,34 @@ export class WeatherService {
         });
     }
 
+// getCurrentPosition(){
+//       if (navigator.geolocation) {
+//       navigator.geolocation.getCurrentPosition((position) => {
+//         const {latitude, longitude} = position.coords;
+//         this.getGeoPosition(latitude, longitude).subscribe((data) => {
+//           this.setCurrentCityByGeoPosition(data);
+//         });
+//       });
+//     } else {
+//       this.getGeoPosition(this.DEFAULT_LAT, this.DEFAULT_LNG).subscribe((data) => {
+//         this.setCurrentCityByGeoPosition(data);
+//       });
+//     }
+// }
+
+
+    // getCurrentPosition(){
+    //  if (navigator.geolocation) {
+    //     navigator.geolocation.getCurrentPosition((position) => {
+    //     const {latitude, longitude} = position.coords;
+    //     this.getGeoPosition(latitude,longitude).subscribe(coords =>{
+    //          this.setCurrentCityByGeoPosition(coords);
+    //     });
+    //     })
+
+    // }
+    //                     }
+
     getGeoPosition(lat: number, lng: number): Observable<any> {
         const GeoPositionUrl = `//dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=${this.API_KEY}&q=${lat},${lng}`;
         return this.http.get(GeoPositionUrl);
