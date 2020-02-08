@@ -10,7 +10,7 @@ import { UtilService } from './util.service';
     providedIn: 'root',
 })
 export class WeatherService {
-    API_KEY = 'X2rypXBseZ5wl2VSzcNvDJWkCQXiwaO4';
+    API_KEY = 'EDoXcIUtqNmGbRlLbqNReSUUtgmnUHt0';
     DEFAULT_LAT = 32.109333;
     DEFAULT_LNG = 34.855499;
     celsius: number;
@@ -47,7 +47,6 @@ export class WeatherService {
         this.currentCity.next(currentCity);
     }
 
-    
     getCurrentPosition() {
         return new Promise((resolve, reject) => {
             if (navigator.geolocation) {
@@ -68,7 +67,6 @@ export class WeatherService {
         });
     }
 
-    
     getGeoPosition(lat: number, lng: number): Observable<any> {
         const GeoPositionUrl = `//dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=${this.API_KEY}&q=${lat},${lng}`;
         return this.http.get(GeoPositionUrl);

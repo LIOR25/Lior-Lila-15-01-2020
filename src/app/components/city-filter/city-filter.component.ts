@@ -19,7 +19,7 @@ export class CityFilterComponent {
             this.cityResults = [];
             return;
         }
-        if (inputValue > 3) {
+        if (event.target.value.length > 3) {
             this.weatherService.getAutocomplete(inputValue).subscribe(
                 city => {
                     this.cityResults = city.map(item => ({
