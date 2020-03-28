@@ -9,7 +9,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "format": "prettier --write 'src/**/*.{ts,scss,html}'",
-    "deploy": "ng deploy --base-href=/Lior-Lila-15-01-2020/"
+    "deploy": "ng build --prod --base-href=/Lior-Lila-15-01-2020/"
   },
   "private": true,
   "dependencies": {
