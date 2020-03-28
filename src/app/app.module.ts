@@ -27,8 +27,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatListModule } from '@angular/material';
 
 import { weatherReducer } from './store/weather.reducer';
 import { StoreModule } from '@ngrx/store';
@@ -58,8 +56,6 @@ import { from } from 'rxjs';
         MatMenuModule,
         MatToolbarModule,
         MatIconModule,
-        MatSidenavModule,
-        MatListModule,
         [
             (SweetAlert2Module.forRoot(), BrowserAnimationsModule)
         ],
