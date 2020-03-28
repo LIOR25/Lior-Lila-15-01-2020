@@ -1,5 +1,11 @@
 .mat-toolbar {
     background: white !important;
+
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    z-index: 1;
 }
 
 a {
@@ -24,5 +30,18 @@ li {
 img {
     width: 45px;
 }
+
+@media (min-width: 700px) {
+  .mat-icon-button {
+    display: none;
+  }
+}
+
+@media (max-width: 700px) {
+ ul {
+    display: none;
+  }
+}
+
 
 

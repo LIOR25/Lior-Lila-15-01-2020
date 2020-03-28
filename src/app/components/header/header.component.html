@@ -1,4 +1,12 @@
 <mat-toolbar>
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>menu</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+        <button mat-menu-item> <a routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
+                routerLink="/">Home</a></button>
+        <button mat-menu-item><a routerLinkActive="active" routerLink="/favorites">Favorites</a></button>
+    </mat-menu>
     <img src="assets/sun logo.jpg" />
     <a routerLink="/home" class="navbar-brand">
         Weather App
@@ -7,16 +15,10 @@
     <nav>
         <ul>
             <li>
-                <a
-                    routerLinkActive="active"
-                    [routerLinkActiveOptions]="{ exact: true }"
-                    routerLink="/"
-                    >Home</a>
+                <a routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" routerLink="/">Home</a>
             </li>
             <li>
-                <a routerLinkActive="active" routerLink="/favorites"
-                    >Favorites</a
-                >
+                <a routerLinkActive="active" routerLink="/favorites">Favorites</a>
             </li>
         </ul>
     </nav>

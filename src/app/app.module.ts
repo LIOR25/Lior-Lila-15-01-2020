@@ -27,9 +27,12 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material';
 
 import { weatherReducer } from './store/weather.reducer';
 import { StoreModule } from '@ngrx/store';
+import { from } from 'rxjs';
 
 @NgModule({
     declarations: [
@@ -55,7 +58,11 @@ import { StoreModule } from '@ngrx/store';
         MatMenuModule,
         MatToolbarModule,
         MatIconModule,
-        [SweetAlert2Module.forRoot(), BrowserAnimationsModule],
+        MatSidenavModule,
+        MatListModule,
+        [
+            (SweetAlert2Module.forRoot(), BrowserAnimationsModule)
+        ],
         StoreModule.forRoot({ weatherState: weatherReducer }),
     ],
     providers: [WeatherService, FavoritesService, StorageService, UtilService],

@@ -23,8 +23,7 @@ export class FavoritesPageComponent implements OnInit {
 
     async getFavoritesCurrentWeather() {
         const { favorites } = this.favoritesService;
-        console.log(favorites, 'favorites');
-        
+
         const favoritesForecasts = await Promise.all(
             favorites.map(favoriteCity =>
                 this.weatherService

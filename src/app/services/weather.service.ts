@@ -10,7 +10,7 @@ import { UtilService } from './util.service';
     providedIn: 'root',
 })
 export class WeatherService {
-    API_KEY = 'Ri5y2eX4Y3kO65mtvxhPDAX7AsZ1tJb1';
+    API_KEY = 'EDoXcIUtqNmGbRlLbqNReSUUtgmnUHt0';
     DEFAULT_LAT = 32.109333;
     DEFAULT_LNG = 34.855499;
     celsius: number;
